@@ -13,12 +13,22 @@ using namespace std::chrono_literals;
 #define DEBUG_FFT_SUMMARY   1   // 1: print one-line summary per channel
 #define DEBUG_THRESH_MSG    1   // 1: show decision variables each window
 
-static float ACC_T_TH    = 0.30f;  // 提高加速度计震颤阈值
-static float ACC_D_TH    = 0.30f;  // 提高加速度计运动障碍阈值
-static float GYR_T_TH    = 40.0f;  // 提高陀螺仪震颤阈值
-static float GYR_D_TH    = 40.0f;  // 提高陀螺仪运动障碍阈值
-static float PEAK_TO_RMS = 4.0f;   // 提高峰值/RMS比值阈值
-/***********************************************/
+static float ACC_T_TH    = 0.10f;  // 保持加速度计震颤阈值
+static float ACC_D_TH    = 0.10f;  // 保持加速度计运动障碍阈值
+static float GYR_T_TH    = 10.0f;  // 保持陀螺仪震颤阈值
+static float GYR_D_TH    = 10.0f;  // 保持陀螺仪运动障碍阈值
+static float PEAK_TO_RMS = 1.5f;   // 保持峰值/RMS比值阈值
+
+// 添加稳定性判断参数
+static const int STABLE_WINDOWS = 1;  // 保持只需要一个窗口
+static int stable_tremor = 0;         // 震颤稳定计数器
+static int stable_dyskinesia = 0;     // 运动障碍稳定计数器
+
+// 添加基线校准参数
+static const int CALIBRATION_WINDOWS = 5;   // 减少校准窗口数
+static float baseline_acc[3] = {0};        // 加速度计基线
+static float baseline_gyr[3] = {0};        // 陀螺仪基线
+static bool is_calibrated = false;         // 校准状态
 
 /*********** Debug serial ***********/
 UnbufferedSerial pc(USBTX, USBRX, 115200);
@@ -37,12 +47,15 @@ constexpr uint8_t OUT_XL_L  = 0x28;
 
 /*********** Algorithm parameters ***********/
 constexpr uint32_t Fs    = 104;
-constexpr uint32_t WIN_S = 3;
+constexpr uint32_t WIN_S = 1;    // 减少窗口大小从 3 秒到 1 秒
 constexpr size_t   N     = Fs * WIN_S;
-constexpr size_t   FFTN  = 512;
+constexpr size_t   FFTN  = 256;  // 减少 FFT 点数以提高处理速度
 
-/*********** LED output ***********/
-PwmOut led(PA_5);
+/*********** LED outputs ***********/
+PwmOut led_tremor(PA_5);      // LD2 (绿色) - 震颤指示
+PwmOut led_dyskinesia(PC_9);  // LD4 (蓝色) - 运动障碍指示
+DigitalOut led_status(PB_14);  // LD3 (红色) - 系统状态指示
+DigitalOut led_power(PA_8);    // LD5 (红色) - 电源/错误指示
 
 /*********** Data buffers ***********/
 static float ax[FFTN], ay[FFTN], az[FFTN];
@@ -105,7 +118,16 @@ int main() {
          r8(CTRL1_XL), r8(CTRL2_G), r8(CTRL3_C));
 
     // LED setup
-    led.period_ms(1);
+    led_tremor.period_ms(1);
+    led_dyskinesia.period_ms(1);
+    led_status = 0;  // 使用数字输出
+    led_power = 0;   // 使用数字输出
+
+    // 初始 LED 状态 - 全部关闭
+    led_tremor.write(0);
+    led_dyskinesia.write(0);
+    led_status = 0;
+    led_power = 0;
 
     // FFT initialization
     arm_rfft_fast_instance_f32 fft;
@@ -118,6 +140,43 @@ int main() {
 
     // Attach ticker
     tick.attach(&isr, 9600us);
+
+    // 添加校准过程
+    logf("Starting calibration...\r\n");
+    for (int i = 0; i < CALIBRATION_WINDOWS; i++) {
+        size_t idx = 0;
+        while (idx < N) {
+            if (!tick_flag) continue;
+            tick_flag = false;
+
+            uint8_t data[6];
+            
+            // 收集加速度计数据
+            if (rN(OUT_XL_L, data) != 0) continue;
+            baseline_acc[0] += (data[0] | (data[1] << 8)) * 0.000061f;
+            baseline_acc[1] += (data[2] | (data[3] << 8)) * 0.000061f;
+            baseline_acc[2] += (data[4] | (data[5] << 8)) * 0.000061f;
+
+            // 收集陀螺仪数据
+            if (rN(OUT_G_L, data) != 0) continue;
+            baseline_gyr[0] += (data[0] | (data[1] << 8)) * 0.00875f;
+            baseline_gyr[1] += (data[2] | (data[3] << 8)) * 0.00875f;
+            baseline_gyr[2] += (data[4] | (data[5] << 8)) * 0.00875f;
+
+            ++idx;
+        }
+        ThisThread::sleep_for(100ms);
+    }
+
+    // 计算平均值作为基线
+    for (int i = 0; i < 3; i++) {
+        baseline_acc[i] /= (CALIBRATION_WINDOWS * N);
+        baseline_gyr[i] /= (CALIBRATION_WINDOWS * N);
+    }
+    is_calibrated = true;
+    logf("Calibration complete. Baselines: ACC[%.3f, %.3f, %.3f] GYR[%.3f, %.3f, %.3f]\r\n",
+         baseline_acc[0], baseline_acc[1], baseline_acc[2],
+         baseline_gyr[0], baseline_gyr[1], baseline_gyr[2]);
 
     uint32_t windowCount = 0;
     while (true) {
@@ -149,13 +208,13 @@ int main() {
                      axr, ayr, azr, gxr, gyr, gzr);
             }
 
-            // Scale
-            ax[idx] = axr * 0.000061f;
-            ay[idx] = ayr * 0.000061f;
-            az[idx] = azr * 0.000061f;
-            gx[idx] = gxr * 0.00875f;
-            gy[idx] = gyr * 0.00875f;
-            gz[idx] = gzr * 0.00875f;
+            // Scale and remove baseline
+            ax[idx] = axr * 0.000061f - baseline_acc[0];
+            ay[idx] = ayr * 0.000061f - baseline_acc[1];
+            az[idx] = azr * 0.000061f - baseline_acc[2];
+            gx[idx] = gxr * 0.00875f - baseline_gyr[0];
+            gy[idx] = gyr * 0.00875f - baseline_gyr[1];
+            gz[idx] = gzr * 0.00875f - baseline_gyr[2];
 
             ++idx;
         }
@@ -203,12 +262,12 @@ int main() {
                      (double)rms);
             }
 
-            // Threshold logic
-            if (p35 >= tth && p35 / rms > PEAK_TO_RMS) {
+            // 改进的阈值逻辑
+            if (p35 >= tth && p35 / rms > PEAK_TO_RMS && rms > tth * 0.5f) {
                 trem = true;
                 levelT = fmaxf(levelT, p35 / scale);
             }
-            if (p57 >= dth && p57 / rms > PEAK_TO_RMS) {
+            if (p57 >= dth && p57 / rms > PEAK_TO_RMS && rms > dth * 0.5f) {
                 dysk = true;
                 levelD = fmaxf(levelD, p57 / scale);
             }
@@ -230,38 +289,57 @@ int main() {
         }
 
         // LED feedback
-        int freq = 0;
-        float duty = 0;
+        bool show_tremor = false;
+        bool show_dyskinesia = false;
+
         if (dysk && (!trem || levelD >= levelT)) {
-            freq = 5;
-            duty = levelD;
+            stable_dyskinesia++;
+            stable_tremor = 0;
+            if (stable_dyskinesia >= STABLE_WINDOWS) {
+                show_dyskinesia = true;
+            }
         } else if (trem) {
-            freq = 2;
-            duty = levelT;
+            stable_tremor++;
+            stable_dyskinesia = 0;
+            if (stable_tremor >= STABLE_WINDOWS) {
+                show_tremor = true;
+            }
         } else {
-            led.write(0);
-            continue;
+            stable_tremor = 0;
+            stable_dyskinesia = 0;
         }
 
-        int half_period = Fs / (2 * freq);
-        int cnt = 0;
-        idx = 0;
-        while (idx < N) {
-            if (!tick_flag) continue;
-            tick_flag = false;
+        // 重置所有 LED 状态
+        led_tremor.write(0);
+        led_dyskinesia.write(0);
+        led_status = 0;
+        led_power = 0;
 
-            if (cnt < half_period) {
-                led.write(duty);
-            } else {
-                led.write(0);
-            }
+        // 只在检测到运动时更新 LED
+        if (show_dyskinesia) {
+            // 运动障碍指示
+            led_dyskinesia.period_ms(200);  // 5Hz
+            led_dyskinesia.write(levelD);   // 亮度与强度成正比
+        } else if (show_tremor) {
+            // 震颤指示
+            led_tremor.period_ms(500);      // 2Hz
+            led_tremor.write(levelT);       // 亮度与强度成正比
+        }
 
-            ++cnt;
-            if (cnt >= half_period) {
-                cnt = 0;
-            }
+        // 更新状态 LED - 只在检测到运动时亮起
+        if (show_tremor || show_dyskinesia) {
+            led_status = 1;  // 使用数字输出
+        } else {
+            led_status = 0;
+        }
 
-            ++idx;
+        // 保持电源 LED 关闭
+        led_power = 0;
+
+        // 添加调试信息
+        if (DEBUG_THRESH_MSG) {
+            logf("Motion detected - Tremor: %d(%.2f) Dyskinesia: %d(%.2f)\r\n",
+                 trem, levelT, dysk, levelD);
         }
     }
 }
