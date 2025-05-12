@@ -1,0 +1,11 @@
+# Exclude .vscode directory
+.vscode/
+
+# Include include directory
+!include/
+
+# Include .pio directory
+!.pio/
+
+# Exclude .DS_Store files
+.DS_Store
