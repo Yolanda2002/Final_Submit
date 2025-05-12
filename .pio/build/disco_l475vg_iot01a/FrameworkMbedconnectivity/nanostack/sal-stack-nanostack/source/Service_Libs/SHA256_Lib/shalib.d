@@ -1,0 +1,29 @@
+.pio/build/disco_l475vg_iot01a/FrameworkMbedconnectivity/nanostack/sal-stack-nanostack/source/Service_Libs/SHA256_Lib/shalib.o: \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nanostack/sal-stack-nanostack/source/Service_Libs/SHA256_Lib/shalib.c \
+ .pio/build/disco_l475vg_iot01a/mbed_config.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nanostack/sal-stack-nanostack/source/nsconfig.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/libraries/nanostack-libservice/mbed-client-libservice/ns_types.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nanostack/sal-stack-nanostack/source/configs/cfg_nanostack_full.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nanostack/sal-stack-nanostack/source/configs/cfg_generic.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nanostack/sal-stack-nanostack/source/configs/base/cfg_thread_border_router.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nanostack/sal-stack-nanostack/source/configs/base/cfg_thread_router.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nanostack/sal-stack-nanostack/source/configs/base/cfg_thread_full_end_device.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nanostack/sal-stack-nanostack/source/configs/base/cfg_thread_end_device.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nanostack/sal-stack-nanostack/source/configs/base/cfg_ethernet.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nanostack/sal-stack-nanostack/source/configs/base/cfg_lowpan_border_router.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nanostack/sal-stack-nanostack/source/configs/base/cfg_lowpan_router.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nanostack/sal-stack-nanostack/source/configs/base/cfg_lowpan_host.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nanostack/sal-stack-nanostack/source/configs/base/cfg_local_socket.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nanostack/sal-stack-nanostack/source/configs/base/cfg_rf_tunnel.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nanostack/sal-stack-nanostack/source/configs/base/cfg_ws_full.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nanostack/sal-stack-nanostack/source/configs/base/cfg_ws_border_router.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nanostack/sal-stack-nanostack/source/configs/base/cfg_ws_router.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nanostack/sal-stack-nanostack/source/configs/base/cfg_ws_host.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/libraries/nanostack-libservice/mbed-client-libservice/common_functions.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/libraries/nanostack-libservice/mbed-client-libservice/ns_types.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nanostack/sal-stack-nanostack/nanostack/shalib.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nanostack/sal-stack-nanostack/nanostack/ns_sha256.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/mbedtls/include/mbedtls/sha256.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/mbedtls/include/mbedtls/config.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/mbedtls/platform/inc/platform_mbed.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/mbedtls/include/mbedtls/check_config.h

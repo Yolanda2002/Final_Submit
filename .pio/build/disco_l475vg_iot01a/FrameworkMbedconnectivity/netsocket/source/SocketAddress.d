@@ -1,0 +1,24 @@
+.pio/build/disco_l475vg_iot01a/FrameworkMbedconnectivity/netsocket/source/SocketAddress.o: \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/netsocket/source/SocketAddress.cpp \
+ .pio/build/disco_l475vg_iot01a/mbed_config.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/netsocket/include/netsocket/SocketAddress.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/netsocket/include/netsocket/nsapi_types.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/include/platform/mbed_toolchain.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/include/platform/mbed_preprocessor.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/netsocket/include/netsocket/NetworkInterface.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/netsocket/include/netsocket/nsapi_types.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/include/platform/Callback.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/cxxsupport/mstd_cstddef \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/cxxsupport/mstd_new \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/include/platform/mbed_assert.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/include/platform/mbed_toolchain.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/cxxsupport/mstd_type_traits \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/cxxsupport/mstd_functional \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/cxxsupport/mstd_memory \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/cxxsupport/mstd_utility \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/cxxsupport/mstd_iterator \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/netsocket/include/netsocket/DNS.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/netsocket/include/netsocket/NetworkStack.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/libraries/nanostack-libservice/mbed-client-libservice/ip4string.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/libraries/nanostack-libservice/mbed-client-libservice/ns_types.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/libraries/nanostack-libservice/mbed-client-libservice/ip6string.h

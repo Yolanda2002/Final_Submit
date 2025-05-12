@@ -1,0 +1,19 @@
+.pio/build/disco_l475vg_iot01a/FrameworkMbedstorage/blockdevice/source/SFDP.o: \
+ /Users/yolanday/.platformio/packages/framework-mbed/storage/blockdevice/source/SFDP.cpp \
+ .pio/build/disco_l475vg_iot01a/mbed_config.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/include/platform/mbed_error.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/include/platform/mbed_retarget.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/include/platform/mbed_toolchain.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/include/platform/mbed_preprocessor.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/storage/blockdevice/include/blockdevice/internal/SFDP.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/storage/blockdevice/include/blockdevice/BlockDevice.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/include/platform/Callback.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/cxxsupport/mstd_cstddef \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/cxxsupport/mstd_new \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/include/platform/mbed_assert.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/cxxsupport/mstd_type_traits \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/cxxsupport/mstd_functional \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/cxxsupport/mstd_memory \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/cxxsupport/mstd_utility \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/cxxsupport/mstd_iterator \
+ /Users/yolanday/.platformio/packages/framework-mbed/platform/mbed-trace/include/mbed-trace/mbed_trace.h

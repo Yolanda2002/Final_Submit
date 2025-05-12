@@ -1,0 +1,25 @@
+.pio/build/disco_l475vg_iot01a/FrameworkMbedconnectivity/nfc/libraries/stack/tech/type4/type4_target.o: \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/stack/tech/type4/type4_target.c \
+ .pio/build/disco_l475vg_iot01a/mbed_config.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/stack/nfc_errors.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/stack/tech/type4/type4_target.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/stack/nfc_common.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/stack/nfc_errors.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/stack/platform/nfc_debug.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/acore/acore/ac_macros.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/acore/acore/ac_buffer.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/acore/acore/ac_buffer_reader.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/acore/acore/ac_buffer_builder.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/acore/acore/ac_stream.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/stack/tech/iso7816/iso7816.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/stack/transceiver/protocols.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/stack/tech/isodep/isodep_target.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/stack/transceiver/transceiver.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/stack/transceiver/protocols.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/stack/platform/nfc_transport.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/stack/platform/nfc_scheduler.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/stack/tech/isodep/isodep.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/stack/tech/iso7816/iso7816_app.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/stack/tech/iso7816/iso7816.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/stack/ndef/ndef.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/connectivity/nfc/libraries/stack/tech/iso7816/iso7816_defs.h

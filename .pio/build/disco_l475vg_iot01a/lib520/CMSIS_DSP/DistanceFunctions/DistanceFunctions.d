@@ -1,0 +1,42 @@
+.pio/build/disco_l475vg_iot01a/lib520/CMSIS_DSP/DistanceFunctions/DistanceFunctions.o: \
+ lib/CMSIS_DSP/src/DistanceFunctions/DistanceFunctions.c \
+ .pio/build/disco_l475vg_iot01a/mbed_config.h \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_boolean_distance.c \
+ lib/CMSIS_DSP/include/dsp/distance_functions.h \
+ lib/CMSIS_DSP/include/arm_math_types.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/cmsis/CMSIS_5/CMSIS/TARGET_CORTEX_M/Include/cmsis_compiler.h \
+ /Users/yolanday/.platformio/packages/framework-mbed/cmsis/CMSIS_5/CMSIS/TARGET_CORTEX_M/Include/cmsis_gcc.h \
+ lib/CMSIS_DSP/include/arm_math_memory.h \
+ lib/CMSIS_DSP/include/arm_math_types.h lib/CMSIS_DSP/include/dsp/none.h \
+ lib/CMSIS_DSP/include/dsp/utils.h \
+ lib/CMSIS_DSP/include/dsp/statistics_functions.h \
+ lib/CMSIS_DSP/include/dsp/basic_math_functions.h \
+ lib/CMSIS_DSP/include/dsp/fast_math_functions.h \
+ lib/CMSIS_DSP/include/dsp/matrix_functions.h \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_boolean_distance_template.h \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_braycurtis_distance_f32.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_canberra_distance_f32.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_chebyshev_distance_f32.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_chebyshev_distance_f64.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_cityblock_distance_f32.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_cityblock_distance_f64.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_correlation_distance_f32.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_cosine_distance_f32.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_cosine_distance_f64.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_dice_distance.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_euclidean_distance_f32.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_euclidean_distance_f64.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_hamming_distance.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_jaccard_distance.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_jensenshannon_distance_f32.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_kulsinski_distance.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_minkowski_distance_f32.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_rogerstanimoto_distance.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_russellrao_distance.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_sokalmichener_distance.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_sokalsneath_distance.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_yule_distance.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_dtw_distance_f32.c \
+ lib/CMSIS_DSP/include/dsp/matrix_utils.h \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_dtw_path_f32.c \
+ lib/CMSIS_DSP/src/DistanceFunctions/arm_dtw_init_window_q7.c
